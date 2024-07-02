@@ -12,7 +12,11 @@ final class MainViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .white
+        makeNavigationUI()
+        
+        setupToolBar()
+        setupAppearance()
+        setupToolBarButton()
     }
     
 }
