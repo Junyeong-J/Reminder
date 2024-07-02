@@ -17,14 +17,14 @@ extension UIViewController {
         
         let appearance = UIToolbarAppearance()
         appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = .clear
+        appearance.backgroundColor = .white
         navigationController?.toolbar.scrollEdgeAppearance = appearance
     }
     
     func setupToolBarButton() {
         
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let newTodo = UIBarButtonItem(title: "새로운 할 일", style: .plain, target: self, action: nil)
+        let newTodo = UIBarButtonItem(title: "새로운 할 일", style: .plain, target: self, action: #selector(newTodoClicked))
         let listAdd = UIBarButtonItem(title: "목록 추가", style: .plain, target: self, action: nil)
         let barItems = [newTodo, flexibleSpace, flexibleSpace, flexibleSpace, listAdd]
         
@@ -35,6 +35,8 @@ extension UIViewController {
         navigationController?.isNavigationBarHidden = false
         let navigationBarAppearance = UINavigationBarAppearance()
         navigationBarAppearance.configureWithTransparentBackground()
+        navigationBarAppearance.backgroundColor = .white
+        
         UINavigationBar.appearance().standardAppearance = navigationBarAppearance
         UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
         
@@ -47,8 +49,15 @@ extension UIViewController {
         
         let list = UIBarButtonItem(image: UIImage(systemName: "ellipsis.circle"), style: .plain, target: self, action: nil)
         navigationItem.rightBarButtonItem = list
-        
         navigationItem.title = "전체"
+    }
+    
+    
+    
+    
+    @objc func newTodoClicked() {
+        let vc = UINavigationController(rootViewController: NewListViewController())
+        navigationController?.present(vc, animated: true)
     }
     
 }
