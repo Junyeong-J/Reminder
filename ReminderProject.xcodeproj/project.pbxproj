@@ -12,6 +12,7 @@
 		72154D2F2C33E78000EEF679 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72154D2E2C33E78000EEF679 /* Assets.xcassets */; };
 		72154D322C33E78000EEF679 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 72154D312C33E78000EEF679 /* Base */; };
 		72154D3A2C33EC0B00EEF679 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72154D392C33EC0B00EEF679 /* MainViewController.swift */; };
+		72154D3E2C33F17A00EEF679 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72154D3D2C33F17A00EEF679 /* BaseViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		72154D312C33E78000EEF679 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		72154D332C33E78000EEF679 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		72154D392C33EC0B00EEF679 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		72154D3D2C33F17A00EEF679 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 		72154D242C33E77F00EEF679 /* ReminderProject */ = {
 			isa = PBXGroup;
 			children = (
+				72154D3C2C33F16700EEF679 /* Base */,
 				72154D3B2C33EC1100EEF679 /* ViewController */,
 				72154D252C33E77F00EEF679 /* AppDelegate.swift */,
 				72154D272C33E77F00EEF679 /* SceneDelegate.swift */,
@@ -70,6 +73,14 @@
 				72154D392C33EC0B00EEF679 /* MainViewController.swift */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		72154D3C2C33F16700EEF679 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				72154D3D2C33F17A00EEF679 /* BaseViewController.swift */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -143,6 +154,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				72154D3A2C33EC0B00EEF679 /* MainViewController.swift in Sources */,
+				72154D3E2C33F17A00EEF679 /* BaseViewController.swift in Sources */,
 				72154D262C33E77F00EEF679 /* AppDelegate.swift in Sources */,
 				72154D282C33E77F00EEF679 /* SceneDelegate.swift in Sources */,
 			);
