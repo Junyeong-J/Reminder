@@ -10,3 +10,7 @@ import Foundation
 protocol TitleProtocol: AnyObject {
     func titleOrContentSet(title: String, content: String)
 }
+
+protocol LastDateProtocol: AnyObject {
+    func lastDateSet(date: String)
+}

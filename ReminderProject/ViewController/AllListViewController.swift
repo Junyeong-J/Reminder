@@ -34,7 +34,7 @@ final class AllListViewController: BaseViewController {
     override func configureView() {
         super.configureView()
         
-        tableView.rowHeight = 80
+        tableView.rowHeight = 100
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(AllListTableViewCell.self, forCellReuseIdentifier: AllListTableViewCell.identifier)
@@ -51,8 +51,7 @@ extension AllListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: AllListTableViewCell.identifier) as! AllListTableViewCell
         let data = list[indexPath.row]
-        cell.configureData(title: data.memoTitle, content: data.content ?? "")
-        //        cell.overviewLabel.text = data.money.formatted() + "원"
+        cell.configureData(title: data.memoTitle, content: data.content ?? "", date: data.lastDate ?? "")
         return cell
     }
     

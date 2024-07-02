@@ -16,6 +16,7 @@ final class NewListViewController: BaseViewController {
     let tableView = UITableView()
     var titleText: String?
     var memoText: String?
+    var lastDate: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,7 +72,7 @@ extension NewListViewController {
         }
         
         let realm = try! Realm()
-        let data = ListTable(memoTitle: titleText, content: memoText, regdate: Date())
+        let data = ListTable(memoTitle: titleText, content: memoText, lastDate: lastDate, regdate: Date())
         
         try! realm.write {
             realm.add(data)
@@ -107,10 +108,22 @@ extension NewListViewController: UITableViewDataSource, UITableViewDelegate {
         }
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 1 {
+            
+            let vc = DateViewController()
+            vc.delegate = self
+            navigationController?.pushViewController(vc, animated: true)
+        }
+    }
     
 }
 
-extension NewListViewController: TitleProtocol {
+extension NewListViewController: TitleProtocol, LastDateProtocol {
+    func lastDateSet(date: String) {
+        self.lastDate = date
+    }
+    
     func titleOrContentSet(title: String, content: String) {
         self.titleText = title
         self.memoText = content

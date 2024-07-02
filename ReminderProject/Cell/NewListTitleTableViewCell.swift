@@ -45,9 +45,8 @@ final class NewListTitleTableViewCell: BaseTableViewCell {
     }
     
     override func configureView() {
-        textView.backgroundColor = .red
-        titleTextField.backgroundColor = .blue
-        memoTextField.backgroundColor = .brown
+        titleTextField.placeholder = "제목"
+        memoTextField.placeholder = "메모"
     }
     
     @objc private func textFieldDidChange(_ textField: UITextField) {
