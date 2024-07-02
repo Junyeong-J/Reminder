@@ -30,6 +30,8 @@
 		72154D642C3451B100EEF679 /* RealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72154D632C3451B100EEF679 /* RealmModel.swift */; };
 		72154D662C34529600EEF679 /* TitleProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72154D652C34529600EEF679 /* TitleProtocol.swift */; };
 		72154D692C3457C800EEF679 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 72154D682C3457C800EEF679 /* Toast */; };
+		72154D6B2C3459A700EEF679 /* AllListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72154D6A2C3459A700EEF679 /* AllListViewController.swift */; };
+		72154D6D2C34622400EEF679 /* AllListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72154D6C2C34622400EEF679 /* AllListTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -68,6 +70,8 @@
 		72154D5B2C34443800EEF679 /* NewList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewList.swift; sourceTree = "<group>"; };
 		72154D632C3451B100EEF679 /* RealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmModel.swift; sourceTree = "<group>"; };
 		72154D652C34529600EEF679 /* TitleProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleProtocol.swift; sourceTree = "<group>"; };
+		72154D6A2C3459A700EEF679 /* AllListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllListViewController.swift; sourceTree = "<group>"; };
+		72154D6C2C34622400EEF679 /* AllListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllListTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +129,7 @@
 			children = (
 				72154D392C33EC0B00EEF679 /* MainViewController.swift */,
 				72154D532C34062200EEF679 /* NewListViewController.swift */,
+				72154D6A2C3459A700EEF679 /* AllListViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -162,6 +167,7 @@
 				72154D482C33F9F400EEF679 /* MainCollectionViewCell.swift */,
 				72154D552C34360800EEF679 /* NewListTitleTableViewCell.swift */,
 				72154D592C3439AC00EEF679 /* NewListSettingTableViewCell.swift */,
+				72154D6C2C34622400EEF679 /* AllListTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -278,6 +284,7 @@
 				72154D562C34360800EEF679 /* NewListTitleTableViewCell.swift in Sources */,
 				72154D472C33F9D200EEF679 /* BaseCollectionViewCell.swift in Sources */,
 				72154D442C33F96700EEF679 /* ReuseIdentifierProtocol.swift in Sources */,
+				72154D6B2C3459A700EEF679 /* AllListViewController.swift in Sources */,
 				72154D492C33F9F400EEF679 /* MainCollectionViewCell.swift in Sources */,
 				72154D3E2C33F17A00EEF679 /* BaseViewController.swift in Sources */,
 				72154D5C2C34443800EEF679 /* NewList.swift in Sources */,
@@ -289,6 +296,7 @@
 				72154D642C3451B100EEF679 /* RealmModel.swift in Sources */,
 				72154D582C34362C00EEF679 /* BaseTableViewCell.swift in Sources */,
 				72154D282C33E77F00EEF679 /* SceneDelegate.swift in Sources */,
+				72154D6D2C34622400EEF679 /* AllListTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
