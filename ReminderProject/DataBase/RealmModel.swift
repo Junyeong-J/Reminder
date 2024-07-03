@@ -16,6 +16,7 @@ class ListTable: Object {
     @Persisted var tag: String?
     @Persisted var priority: String?
     @Persisted var flag: Bool?
+    @Persisted var completed: Bool?
     @Persisted var regdate: Date
     
     
@@ -28,6 +29,7 @@ class ListTable: Object {
         self.tag = tag
         self.priority = priority
         self.flag = false
+        self.completed = false
         self.regdate = regdate
     }
     

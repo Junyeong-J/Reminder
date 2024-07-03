@@ -9,34 +9,50 @@ import UIKit
 import SnapKit
 
 final class AllListTableViewCell: BaseTableViewCell {
- 
+    
+    let completeButton = UIButton()
     let titleLabel = UILabel()
     let contentLabel = UILabel()
     let dateLabel = UILabel()
     
     override func configureHierarchy() {
+        contentView.addSubview(completeButton)
         contentView.addSubview(titleLabel)
         contentView.addSubview(contentLabel)
         contentView.addSubview(dateLabel)
     }
     
     override func configureLayout() {
+        
+        completeButton.snp.makeConstraints { make in
+            make.leading.equalTo(contentView.safeAreaLayoutGuide).inset(20)
+            make.centerY.equalTo(contentView.safeAreaLayoutGuide)
+            make.size.equalTo(20)
+        }
+        
         titleLabel.snp.makeConstraints { make in
-            make.top.leading.equalTo(contentView.safeAreaLayoutGuide).inset(20)
+            make.top.equalTo(contentView.safeAreaLayoutGuide).inset(20)
+            make.leading.equalTo(completeButton.snp.trailing).offset(10)
         }
         
         contentLabel.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(2)
-            make.leading.equalTo(contentView.safeAreaLayoutGuide).inset(20)
+            make.leading.equalTo(completeButton.snp.trailing).offset(10)
         }
         
         dateLabel.snp.makeConstraints { make in
             make.top.equalTo(contentLabel.snp.bottom).offset(2)
-            make.leading.equalTo(contentView.safeAreaLayoutGuide).inset(20)
+            make.leading.equalTo(completeButton.snp.trailing).offset(10)
         }
     }
     
     override func configureView() {
+        
+        completeButton.backgroundColor = .clear
+        completeButton.layer.cornerRadius = 10
+        completeButton.layer.borderWidth = 2
+        completeButton.layer.borderColor = UIColor.orange.cgColor
+        
         titleLabel.textColor = .black
         titleLabel.font = .boldSystemFont(ofSize: 16)
         contentLabel.textColor = .gray
@@ -50,4 +66,5 @@ final class AllListTableViewCell: BaseTableViewCell {
         contentLabel.text = content
         dateLabel.text = date
     }
+    
 }

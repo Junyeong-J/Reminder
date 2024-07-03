@@ -54,13 +54,17 @@ extension AllListViewController {
         case .schedule:
             list = realm.objects(ListTable.self)
         case .all:
-            list = realm.objects(ListTable.self)
+            list = realm.objects(ListTable.self).where {
+                $0.completed == false
+            }
         case .flag:
             list = realm.objects(ListTable.self).where {
                 $0.flag == true
             }
         case .complete:
-            list = realm.objects(ListTable.self)
+            list = realm.objects(ListTable.self).where {
+                $0.completed == true
+            }
         default:
             break
         }
@@ -86,7 +90,9 @@ extension AllListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: AllListTableViewCell.identifier) as! AllListTableViewCell
         let data = list[indexPath.row]
+        cell.completeButton.tag = indexPath.row
         cell.configureData(title: data.memoTitle, content: data.content ?? "", date: data.lastDate ?? "")
+        cell.completeButton.addTarget(self, action: #selector(completeButtonClicked), for: .touchUpInside)
         return cell
     }
     
@@ -101,8 +107,7 @@ extension AllListViewController: UITableViewDelegate, UITableViewDataSource {
         
         let flagAction = UIContextualAction(style: .normal, title: "깃발") { (action, view, completionHandler) in
             let listTable = self.list[indexPath.row]
-            let realm = try! Realm()
-            try! realm.write {
+            try! self.realm.write {
                 listTable.flag = !(listTable.flag ?? false)
             }
             tableView.reloadData()
@@ -112,6 +117,14 @@ extension AllListViewController: UITableViewDelegate, UITableViewDataSource {
         
         let configuration = UISwipeActionsConfiguration(actions: [delete, flagAction])
         return configuration
+    }
+    
+    @objc func completeButtonClicked(_ sender: UIButton) {
+        let listTable = self.list[sender.tag]
+        try! self.realm.write {
+            listTable.completed = !(listTable.completed ?? false)
+        }
+        tableView.reloadData()
     }
     
 }
