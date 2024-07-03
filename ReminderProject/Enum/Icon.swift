@@ -7,7 +7,7 @@
 
 import UIKit
 
-enum iconType: String {
+enum IconTypes: String {
     
     case today = "오늘"
     case schedule = "예정"

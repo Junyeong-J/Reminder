@@ -31,7 +31,7 @@ extension UIViewController {
         self.toolbarItems = barItems
     }
     
-    func makeNavigationUI() {
+    func makeNavigationUI(title: String) {
         navigationController?.isNavigationBarHidden = false
         let navigationBarAppearance = UINavigationBarAppearance()
         navigationBarAppearance.configureWithTransparentBackground()
@@ -49,7 +49,7 @@ extension UIViewController {
         
         let list = UIBarButtonItem(image: UIImage(systemName: "ellipsis.circle"), style: .plain, target: self, action: nil)
         navigationItem.rightBarButtonItem = list
-        navigationItem.title = "전체"
+        navigationItem.title = title
     }
     
     

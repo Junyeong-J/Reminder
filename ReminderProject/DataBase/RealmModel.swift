@@ -15,8 +15,9 @@ class ListTable: Object {
     @Persisted var lastDate: String?
     @Persisted var tag: String?
     @Persisted var priority: String?
+    @Persisted var flag: Bool?
     @Persisted var regdate: Date
-
+    
     
     convenience init(memoTitle: String, content: String?, lastDate: String?,
                      tag: String?, priority: String?, regdate: Date) {
@@ -26,6 +27,7 @@ class ListTable: Object {
         self.lastDate = lastDate
         self.tag = tag
         self.priority = priority
+        self.flag = false
         self.regdate = regdate
     }
     

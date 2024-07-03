@@ -11,7 +11,7 @@ import RealmSwift
 
 final class MainViewController: BaseViewController {
     
-    let iconTypes: [iconType] = [.today, .schedule, .all, .flag, .complete]
+    let iconTypes: [IconTypes] = [.today, .schedule, .all, .flag, .complete]
     let realm = try! Realm()
     
     lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout())
@@ -32,7 +32,7 @@ final class MainViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        makeNavigationUI()
+        makeNavigationUI(title: "전체")
         configureCollection()
         
         setupToolBar()
@@ -80,11 +80,29 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if indexPath.item == 2 {
+        switch indexPath.item {
+        case 0:
             let vc = AllListViewController()
+            vc.viewType = .today
             navigationController?.pushViewController(vc, animated: true)
-        } else {
-            
+        case 1:
+            let vc = AllListViewController()
+            vc.viewType = .schedule
+            navigationController?.pushViewController(vc, animated: true)
+        case 2:
+            let vc = AllListViewController()
+            vc.viewType = .all
+            navigationController?.pushViewController(vc, animated: true)
+        case 3:
+            let vc = AllListViewController()
+            vc.viewType = .flag
+            navigationController?.pushViewController(vc, animated: true)
+        case 4:
+            let vc = AllListViewController()
+            vc.viewType = .complete
+            navigationController?.pushViewController(vc, animated: true)
+        default:
+            break
         }
     }
     

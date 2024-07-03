@@ -45,7 +45,7 @@ final class MainCollectionViewCell: BaseCollectionViewCell {
         countLabel.text = "0"
     }
     
-    func configureData(icon: iconType) {
+    func configureData(icon: IconTypes) {
         iconImageView.image = UIImage(systemName: icon.setImages())
         iconImageView.backgroundColor = icon.setColor()
         titleLabel.text = icon.rawValue
