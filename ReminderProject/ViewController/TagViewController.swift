@@ -11,9 +11,19 @@ import SnapKit
 final class TagViewController: BaseViewController {
     
     let tagTextField = UITextField()
+    var tagLabel: ((String) -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        if let tag = tagTextField.text {
+            tagLabel?(tag)
+        }
+        
     }
     
     override func configureHierarchy() {

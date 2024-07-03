@@ -13,10 +13,13 @@ import Toast
 final class NewListViewController: BaseViewController {
     
     let list: [NewList] = [.time, .tag, .priority, .image]
-    let tableView = UITableView()
+    var contentList: [String] = ["", "", "", ""]
+    
     var titleText: String?
     var memoText: String?
     var lastDate: String?
+    
+    let tableView = UITableView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -103,7 +106,7 @@ extension NewListViewController: UITableViewDataSource, UITableViewDelegate {
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: NewListSettingTableViewCell.identifier, for: indexPath) as! NewListSettingTableViewCell
-            cell.configureData(list: list[indexPath.row - 1])
+            cell.configureData(list: list[indexPath.row - 1], contentList: contentList[indexPath.row - 1])
             return cell
         }
     }
@@ -115,6 +118,10 @@ extension NewListViewController: UITableViewDataSource, UITableViewDelegate {
             navigationController?.pushViewController(vc, animated: true)
         } else if indexPath.row == 2 {
             let vc = TagViewController()
+            vc.tagLabel = { value in
+                self.contentList[indexPath.row - 1] = value
+                self.tableView.reloadData()
+            }
             navigationController?.pushViewController(vc, animated: true)
         } else if indexPath.row == 3 {
             let vc = PriorityViewController()
