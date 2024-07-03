@@ -13,14 +13,19 @@ class ListTable: Object {
     @Persisted(indexed: true) var memoTitle: String
     @Persisted var content: String?
     @Persisted var lastDate: String?
+    @Persisted var tag: String?
+    @Persisted var priority: String?
     @Persisted var regdate: Date
 
     
-    convenience init(memoTitle: String, content: String?, lastDate: String?, regdate: Date) {
+    convenience init(memoTitle: String, content: String?, lastDate: String?,
+                     tag: String?, priority: String?, regdate: Date) {
         self.init()
         self.memoTitle = memoTitle
         self.content = content
         self.lastDate = lastDate
+        self.tag = tag
+        self.priority = priority
         self.regdate = regdate
     }
     
