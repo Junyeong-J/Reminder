@@ -17,7 +17,6 @@ final class NewListViewController: BaseViewController {
     
     var titleText: String?
     var memoText: String?
-    var lastDate: String?
     
     let tableView = UITableView()
     weak var delegates: PresentProtocol?
@@ -84,7 +83,7 @@ extension NewListViewController {
         }
         
         let realm = try! Realm()
-        let data = ListTable(memoTitle: titleText, content: memoText, lastDate: lastDate, tag: contentList[1], priority: contentList[2], regdate: Date())
+        let data = ListTable(memoTitle: titleText, content: memoText, lastDate: contentList[0], tag: contentList[1], priority: contentList[2], regdate: Date())
         
         try! realm.write {
             realm.add(data)
@@ -144,7 +143,8 @@ extension NewListViewController: UITableViewDataSource, UITableViewDelegate {
 
 extension NewListViewController: TitleProtocol, LastDateProtocol {
     func lastDateSet(date: String) {
-        self.lastDate = date
+        self.contentList[0] = date
+        self.tableView.reloadData()
     }
     
     func titleOrContentSet(title: String, content: String) {
