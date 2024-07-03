@@ -34,6 +34,7 @@
 		72154D6D2C34622400EEF679 /* AllListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72154D6C2C34622400EEF679 /* AllListTableViewCell.swift */; };
 		72154D6F2C34689900EEF679 /* DateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72154D6E2C34689900EEF679 /* DateViewController.swift */; };
 		72154D742C352BF700EEF679 /* TagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72154D732C352BF700EEF679 /* TagViewController.swift */; };
+		72154D762C352EBD00EEF679 /* PriorityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72154D752C352EBD00EEF679 /* PriorityViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -76,6 +77,7 @@
 		72154D6C2C34622400EEF679 /* AllListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllListTableViewCell.swift; sourceTree = "<group>"; };
 		72154D6E2C34689900EEF679 /* DateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateViewController.swift; sourceTree = "<group>"; };
 		72154D732C352BF700EEF679 /* TagViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagViewController.swift; sourceTree = "<group>"; };
+		72154D752C352EBD00EEF679 /* PriorityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriorityViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +138,7 @@
 				72154D6A2C3459A700EEF679 /* AllListViewController.swift */,
 				72154D6E2C34689900EEF679 /* DateViewController.swift */,
 				72154D732C352BF700EEF679 /* TagViewController.swift */,
+				72154D752C352EBD00EEF679 /* PriorityViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -284,6 +287,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				72154D762C352EBD00EEF679 /* PriorityViewController.swift in Sources */,
 				72154D6F2C34689900EEF679 /* DateViewController.swift in Sources */,
 				72154D662C34529600EEF679 /* TitleProtocol.swift in Sources */,
 				72154D542C34062200EEF679 /* NewListViewController.swift in Sources */,

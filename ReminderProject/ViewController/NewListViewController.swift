@@ -116,6 +116,9 @@ extension NewListViewController: UITableViewDataSource, UITableViewDelegate {
         } else if indexPath.row == 2 {
             let vc = TagViewController()
             navigationController?.pushViewController(vc, animated: true)
+        } else if indexPath.row == 3 {
+            let vc = PriorityViewController()
+            navigationController?.pushViewController(vc, animated: true)
         }
         
     }
