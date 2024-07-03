@@ -49,7 +49,6 @@ final class MainCollectionViewCell: BaseCollectionViewCell {
         iconImageView.image = UIImage(systemName: icon.setImages())
         iconImageView.backgroundColor = icon.setColor()
         titleLabel.text = icon.rawValue
-        
-        
+        countLabel.text = "\(icon.getCount())"
     }
 }

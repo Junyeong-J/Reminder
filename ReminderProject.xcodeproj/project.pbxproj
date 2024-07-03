@@ -35,6 +35,7 @@
 		72154D6F2C34689900EEF679 /* DateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72154D6E2C34689900EEF679 /* DateViewController.swift */; };
 		72154D742C352BF700EEF679 /* TagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72154D732C352BF700EEF679 /* TagViewController.swift */; };
 		72154D762C352EBD00EEF679 /* PriorityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72154D752C352EBD00EEF679 /* PriorityViewController.swift */; };
+		72154D782C35A75C00EEF679 /* PresentProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72154D772C35A75C00EEF679 /* PresentProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -78,6 +79,7 @@
 		72154D6E2C34689900EEF679 /* DateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateViewController.swift; sourceTree = "<group>"; };
 		72154D732C352BF700EEF679 /* TagViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagViewController.swift; sourceTree = "<group>"; };
 		72154D752C352EBD00EEF679 /* PriorityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriorityViewController.swift; sourceTree = "<group>"; };
+		72154D772C35A75C00EEF679 /* PresentProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +168,7 @@
 			children = (
 				72154D432C33F96700EEF679 /* ReuseIdentifierProtocol.swift */,
 				72154D652C34529600EEF679 /* TitleProtocol.swift */,
+				72154D772C35A75C00EEF679 /* PresentProtocol.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -301,6 +304,7 @@
 				72154D3E2C33F17A00EEF679 /* BaseViewController.swift in Sources */,
 				72154D5C2C34443800EEF679 /* NewList.swift in Sources */,
 				72154D262C33E77F00EEF679 /* AppDelegate.swift in Sources */,
+				72154D782C35A75C00EEF679 /* PresentProtocol.swift in Sources */,
 				72154D4F2C33FE2100EEF679 /* IconImage.swift in Sources */,
 				72154D5A2C3439AC00EEF679 /* NewListSettingTableViewCell.swift in Sources */,
 				72154D412C33F1EC00EEF679 /* ViewController+Extension.swift in Sources */,

@@ -20,6 +20,7 @@ final class NewListViewController: BaseViewController {
     var lastDate: String?
     
     let tableView = UITableView()
+    weak var delegates: PresentProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,7 +90,7 @@ extension NewListViewController {
             realm.add(data)
             print("Realm Create Succeed")
         }
-        
+        delegates?.presentReload()
         dismiss(animated: true)
     }
 }

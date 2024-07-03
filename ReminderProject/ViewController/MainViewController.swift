@@ -42,6 +42,11 @@ final class MainViewController: BaseViewController {
         print(realm.configuration.fileURL)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        collectionView.reloadData()
+    }
+    
     override func configureHierarchy() {
         view.addSubview(collectionView)
     }
@@ -59,11 +64,30 @@ final class MainViewController: BaseViewController {
 }
 
 extension MainViewController {
+    
+    func setupToolBarButton() {
+        
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let newTodo = UIBarButtonItem(title: "새로운 할 일", style: .plain, target: self, action: #selector(newTodoClicked))
+        let listAdd = UIBarButtonItem(title: "목록 추가", style: .plain, target: self, action: nil)
+        let barItems = [newTodo, flexibleSpace, flexibleSpace, flexibleSpace, listAdd]
+        
+        self.toolbarItems = barItems
+    }
+    
     func configureCollection() {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(MainCollectionViewCell.self, forCellWithReuseIdentifier: MainCollectionViewCell.identifier)
     }
+    
+    @objc func newTodoClicked() {
+        let newListVC = NewListViewController()
+        newListVC.delegates = self
+        let nav = UINavigationController(rootViewController: newListVC)
+        navigationController?.present(nav, animated: true)
+    }
+
 }
 
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -106,4 +130,10 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         }
     }
     
+}
+
+extension MainViewController: PresentProtocol{
+    func presentReload() {
+        collectionView.reloadData()
+    }
 }

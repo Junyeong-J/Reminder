@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 enum IconTypes: String {
     
@@ -44,4 +45,64 @@ enum IconTypes: String {
             return .lightGray
         }
     }
+    
+    func getFilter() -> Results<ListTable> {
+        let realm = try! Realm()
+        switch self {
+        case .today:
+            return realm.objects(ListTable.self).where {
+                $0.lastDate == todayDate()
+            }
+        case .schedule:
+            return realm.objects(ListTable.self)
+        case .all:
+            return realm.objects(ListTable.self).where {
+                $0.completed == false
+            }
+        case .flag:
+            return realm.objects(ListTable.self).where {
+                $0.flag == true
+            }
+        case .complete:
+            return realm.objects(ListTable.self).where {
+                $0.completed == true
+            }
+        }
+    }
+    
+    func getCount() -> Int {
+        var count = 0
+        let realm = try! Realm()
+        switch self {
+        case .today:
+            count = realm.objects(ListTable.self).where {
+                $0.lastDate == todayDate()
+            }.count
+        case .schedule:
+            count = realm.objects(ListTable.self).count
+        case .all:
+            count = realm.objects(ListTable.self).where {
+                $0.completed == false
+            }.count
+        case .flag:
+            count = realm.objects(ListTable.self).where {
+                $0.flag == true
+            }.count
+        case .complete:
+            count = realm.objects(ListTable.self).where {
+                $0.completed == true
+            }.count
+        }
+        
+        return count
+    }
+    
+    func todayDate() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "ko_KR")
+        dateFormatter.dateFormat = "yyyy.MM.dd (EEEE)"
+        let currentDateString = dateFormatter.string(from: Date())
+        return currentDateString
+    }
+    
 }

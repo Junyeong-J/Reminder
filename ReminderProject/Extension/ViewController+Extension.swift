@@ -21,15 +21,7 @@ extension UIViewController {
         navigationController?.toolbar.scrollEdgeAppearance = appearance
     }
     
-    func setupToolBarButton() {
-        
-        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let newTodo = UIBarButtonItem(title: "새로운 할 일", style: .plain, target: self, action: #selector(newTodoClicked))
-        let listAdd = UIBarButtonItem(title: "목록 추가", style: .plain, target: self, action: nil)
-        let barItems = [newTodo, flexibleSpace, flexibleSpace, flexibleSpace, listAdd]
-        
-        self.toolbarItems = barItems
-    }
+    
     
     func makeNavigationUI(title: String) {
         navigationController?.isNavigationBarHidden = false
@@ -55,9 +47,6 @@ extension UIViewController {
     
     
     
-    @objc func newTodoClicked() {
-        let vc = UINavigationController(rootViewController: NewListViewController())
-        navigationController?.present(vc, animated: true)
-    }
+
     
 }
