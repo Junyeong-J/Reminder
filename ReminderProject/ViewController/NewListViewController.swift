@@ -110,11 +110,14 @@ extension NewListViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 1 {
-            
             let vc = DateViewController()
             vc.delegate = self
             navigationController?.pushViewController(vc, animated: true)
+        } else if indexPath.row == 2 {
+            let vc = TagViewController()
+            navigationController?.pushViewController(vc, animated: true)
         }
+        
     }
     
 }

@@ -33,6 +33,7 @@
 		72154D6B2C3459A700EEF679 /* AllListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72154D6A2C3459A700EEF679 /* AllListViewController.swift */; };
 		72154D6D2C34622400EEF679 /* AllListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72154D6C2C34622400EEF679 /* AllListTableViewCell.swift */; };
 		72154D6F2C34689900EEF679 /* DateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72154D6E2C34689900EEF679 /* DateViewController.swift */; };
+		72154D742C352BF700EEF679 /* TagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72154D732C352BF700EEF679 /* TagViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -74,6 +75,7 @@
 		72154D6A2C3459A700EEF679 /* AllListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllListViewController.swift; sourceTree = "<group>"; };
 		72154D6C2C34622400EEF679 /* AllListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllListTableViewCell.swift; sourceTree = "<group>"; };
 		72154D6E2C34689900EEF679 /* DateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateViewController.swift; sourceTree = "<group>"; };
+		72154D732C352BF700EEF679 /* TagViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +135,7 @@
 				72154D532C34062200EEF679 /* NewListViewController.swift */,
 				72154D6A2C3459A700EEF679 /* AllListViewController.swift */,
 				72154D6E2C34689900EEF679 /* DateViewController.swift */,
+				72154D732C352BF700EEF679 /* TagViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -287,6 +290,7 @@
 				72154D3A2C33EC0B00EEF679 /* MainViewController.swift in Sources */,
 				72154D562C34360800EEF679 /* NewListTitleTableViewCell.swift in Sources */,
 				72154D472C33F9D200EEF679 /* BaseCollectionViewCell.swift in Sources */,
+				72154D742C352BF700EEF679 /* TagViewController.swift in Sources */,
 				72154D442C33F96700EEF679 /* ReuseIdentifierProtocol.swift in Sources */,
 				72154D6B2C3459A700EEF679 /* AllListViewController.swift in Sources */,
 				72154D492C33F9F400EEF679 /* MainCollectionViewCell.swift in Sources */,
