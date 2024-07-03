@@ -25,6 +25,8 @@ final class NewListViewController: BaseViewController {
         super.viewDidLoad()
         newListNaviUI()
         configureTableView()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(priorityReceivedNotification), name: NSNotification.Name("priorityReceived"), object: nil)
     }
     
     override func configureHierarchy() {
@@ -41,7 +43,13 @@ final class NewListViewController: BaseViewController {
         view.backgroundColor = .white
     }
     
-    
+    @objc func priorityReceivedNotification(notification: NSNotification) {
+        if let result = notification.userInfo?["content"] as? String {
+            print(result)
+            contentList[2] = result
+            tableView.reloadData()
+        }
+    }
     
 }
 
@@ -75,7 +83,7 @@ extension NewListViewController {
         }
         
         let realm = try! Realm()
-        let data = ListTable(memoTitle: titleText, content: memoText, lastDate: lastDate, regdate: Date())
+        let data = ListTable(memoTitle: titleText, content: memoText, lastDate: lastDate, tag: contentList[1], priority: contentList[2], regdate: Date())
         
         try! realm.write {
             realm.add(data)
@@ -125,6 +133,7 @@ extension NewListViewController: UITableViewDataSource, UITableViewDelegate {
             navigationController?.pushViewController(vc, animated: true)
         } else if indexPath.row == 3 {
             let vc = PriorityViewController()
+            NotificationCenter.default.post(name: NSNotification.Name("sendPriority"), object: nil, userInfo: ["priority": contentList[indexPath.row - 1]])
             navigationController?.pushViewController(vc, animated: true)
         }
         

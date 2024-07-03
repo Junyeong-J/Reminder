@@ -11,12 +11,19 @@ import SnapKit
 final class PriorityViewController: BaseViewController {
     
     let segmentedControl: UISegmentedControl = {
-      let control = UISegmentedControl(items: ["높음", "보통", "낮음"])
-      return control
+        let control = UISegmentedControl(items: ["높음", "보통", "낮음"])
+        return control
     }()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(sendPriorityNotification), name: NSNotification.Name("sendPriority"), object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.post(name: NSNotification.Name("priorityReceived"), object: nil, userInfo: ["content": segmentedControl.titleForSegment(at: segmentedControl.selectedSegmentIndex)])
     }
     
     override func configureHierarchy() {
@@ -32,5 +39,10 @@ final class PriorityViewController: BaseViewController {
     
     override func configureView() {
         super.configureView()
+    }
+    
+    @objc func sendPriorityNotification(notification: NSNotification) {
+        print(#function, notification.userInfo)
+        
     }
 }
