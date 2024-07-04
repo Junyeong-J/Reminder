@@ -12,7 +12,7 @@ class ListTable: Object {
     @Persisted(primaryKey: true) var id: ObjectId
     @Persisted(indexed: true) var memoTitle: String
     @Persisted var content: String?
-    @Persisted var lastDate: String?
+    @Persisted var lastDate: Date?
     @Persisted var tag: String?
     @Persisted var priority: String?
     @Persisted var flag: Bool?
@@ -20,7 +20,7 @@ class ListTable: Object {
     @Persisted var regdate: Date
     
     
-    convenience init(memoTitle: String, content: String?, lastDate: String?,
+    convenience init(memoTitle: String, content: String?, lastDate: Date?,
                      tag: String?, priority: String?, regdate: Date) {
         self.init()
         self.memoTitle = memoTitle

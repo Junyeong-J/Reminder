@@ -54,7 +54,7 @@ extension AllListViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: AllListTableViewCell.identifier) as! AllListTableViewCell
         let data = list[indexPath.row]
         cell.completeButton.tag = indexPath.row
-        cell.configureData(title: data.memoTitle, content: data.content ?? "", date: data.lastDate ?? "")
+        cell.configureData(title: data.memoTitle, content: data.content ?? "", date: data.lastDate ?? Date())
         cell.completeButton.addTarget(self, action: #selector(completeButtonClicked), for: .touchUpInside)
         return cell
     }

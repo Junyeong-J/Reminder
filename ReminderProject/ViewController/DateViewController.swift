@@ -59,7 +59,7 @@ final class DateViewController: BaseViewController {
         dateFormatter.dateFormat = "yyyy.MM.dd (EEEE)"
         let dateString = dateFormatter.string(from: date)
         dateLabel.text = dateString
-        delegate?.lastDateSet(date: dateString)
+        delegate?.lastDateSet(date: date)
     }
 }
 

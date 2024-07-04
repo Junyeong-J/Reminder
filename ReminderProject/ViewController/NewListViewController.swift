@@ -13,7 +13,8 @@ import Toast
 final class NewListViewController: BaseViewController {
     
     let list: [NewList] = [.time, .tag, .priority, .image]
-    var contentList: [String] = ["", "", "", ""]
+    var lastDate: Date?
+    var contentList = ["", "", "", ""]
     
     var titleText: String?
     var memoText: String?
@@ -83,7 +84,7 @@ extension NewListViewController {
         }
         
         let realm = try! Realm()
-        let data = ListTable(memoTitle: titleText, content: memoText, lastDate: contentList[0], tag: contentList[1], priority: contentList[2], regdate: Date())
+        let data = ListTable(memoTitle: titleText, content: memoText, lastDate: lastDate, tag: contentList[1], priority: contentList[2], regdate: Date())
         
         try! realm.write {
             realm.add(data)
@@ -92,6 +93,8 @@ extension NewListViewController {
         delegates?.presentReload()
         dismiss(animated: true)
     }
+    
+    
 }
 
 extension NewListViewController: UITableViewDataSource, UITableViewDelegate {
@@ -142,8 +145,9 @@ extension NewListViewController: UITableViewDataSource, UITableViewDelegate {
 }
 
 extension NewListViewController: TitleProtocol, LastDateProtocol {
-    func lastDateSet(date: String) {
-        self.contentList[0] = date
+    func lastDateSet(date: Date) {
+        self.lastDate = date
+        self.contentList[0] = updateDateLabel(date: date)
         self.tableView.reloadData()
     }
     
@@ -151,4 +155,13 @@ extension NewListViewController: TitleProtocol, LastDateProtocol {
         self.titleText = title
         self.memoText = content
     }
+    
+    private func updateDateLabel(date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "ko_KR")
+        dateFormatter.dateFormat = "yyyy.MM.dd (EEEE)"
+        let dateString = dateFormatter.string(from: date)
+        return dateString
+    }
+    
 }

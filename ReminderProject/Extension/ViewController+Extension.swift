@@ -40,6 +40,9 @@ extension UIViewController {
         navigationController?.navigationBar.tintColor = .darkGray
         
         let list = UIBarButtonItem(image: UIImage(systemName: "ellipsis.circle"), style: .plain, target: self, action: nil)
+        
+        
+        
         navigationItem.rightBarButtonItem = list
         navigationItem.title = title
     }

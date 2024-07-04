@@ -48,13 +48,16 @@ enum IconTypes: String {
     
     func getFilter() -> Results<ListTable> {
         let realm = try! Realm()
+        
         switch self {
         case .today:
             return realm.objects(ListTable.self).where {
-                $0.lastDate == todayDate()
+                $0.lastDate == Date()
             }
         case .schedule:
-            return realm.objects(ListTable.self)
+            return realm.objects(ListTable.self).where {
+                $0.lastDate > Date()
+            }
         case .all:
             return realm.objects(ListTable.self).where {
                 $0.completed == false
@@ -76,10 +79,12 @@ enum IconTypes: String {
         switch self {
         case .today:
             count = realm.objects(ListTable.self).where {
-                $0.lastDate == todayDate()
+                $0.lastDate == Date()
             }.count
         case .schedule:
-            count = realm.objects(ListTable.self).count
+            count = realm.objects(ListTable.self).where {
+                $0.lastDate > Date()
+            }.count
         case .all:
             count = realm.objects(ListTable.self).where {
                 $0.completed == false
@@ -104,5 +109,4 @@ enum IconTypes: String {
         let currentDateString = dateFormatter.string(from: Date())
         return currentDateString
     }
-    
 }

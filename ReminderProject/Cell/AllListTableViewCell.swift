@@ -61,10 +61,18 @@ final class AllListTableViewCell: BaseTableViewCell {
         dateLabel.font = .boldSystemFont(ofSize: 14)
     }
     
-    func configureData(title: String, content: String, date: String) {
+    func configureData(title: String, content: String, date: Date) {
         titleLabel.text = title
         contentLabel.text = content
-        dateLabel.text = date
+        dateLabel.text = updateDateLabel(date: date)
+    }
+    
+    private func updateDateLabel(date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "ko_KR")
+        dateFormatter.dateFormat = "yyyy.MM.dd (EEEE)"
+        let dateString = dateFormatter.string(from: date)
+        return dateString
     }
     
 }

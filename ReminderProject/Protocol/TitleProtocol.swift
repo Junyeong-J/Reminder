@@ -12,5 +12,5 @@ protocol TitleProtocol: AnyObject {
 }
 
 protocol LastDateProtocol: AnyObject {
-    func lastDateSet(date: String)
+    func lastDateSet(date: Date)
 }
