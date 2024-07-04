@@ -39,17 +39,15 @@ extension UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.tintColor = .darkGray
         
-        let list = UIBarButtonItem(image: UIImage(systemName: "ellipsis.circle"), style: .plain, target: self, action: nil)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "ellipsis.circle"),
+            menu: UIMenu(title: "", options: [], children: [
+            UIAction(title: "마감일순", image: UIImage(systemName: "calendar.badge.clock"), handler: { _ in }),
+            UIAction(title: "제목순", image: UIImage(systemName: "note.text"), handler: { _ in }),
+            UIAction(title: "우선순위 낮음만", image: UIImage(systemName: "arrowshape.down"), handler: { _ in }),
+            ]))
         
-        
-        
-        navigationItem.rightBarButtonItem = list
         navigationItem.title = title
     }
     
-    
-    
-    
-
     
 }
