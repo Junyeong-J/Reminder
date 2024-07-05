@@ -34,15 +34,15 @@ enum IconTypes: String {
     func setColor() -> UIColor {
         switch self {
         case .today:
-            return .blue
+            return #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
         case .schedule:
-            return .red
+            return #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
         case .all:
-            return .darkGray
+            return #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
         case .flag:
-            return .yellow
+            return #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
         case .complete:
-            return .lightGray
+            return #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
         }
     }
     
@@ -59,11 +59,11 @@ enum IconTypes: String {
         case .schedule:
             return realm.objects(ListTable.self).where {
                 $0.lastDate > Date()
-            }
+            }.sorted(byKeyPath: "lastDate", ascending: true)
         case .all:
             return realm.objects(ListTable.self).where {
                 $0.completed == false
-            }
+            }.sorted(byKeyPath: "lastDate", ascending: true)
         case .flag:
             return realm.objects(ListTable.self).where {
                 $0.flag == true

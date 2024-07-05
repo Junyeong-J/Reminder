@@ -44,6 +44,34 @@ final class AllListViewController: BaseViewController {
     
 }
 
+extension AllListViewController {
+    func makeNavigationUI(title: String) {
+        navigationController?.isNavigationBarHidden = false
+        let navigationBarAppearance = UINavigationBarAppearance()
+        navigationBarAppearance.configureWithTransparentBackground()
+        navigationBarAppearance.backgroundColor = .white
+        
+        UINavigationBar.appearance().standardAppearance = navigationBarAppearance
+        UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
+        
+        navigationController?.navigationBar.standardAppearance = navigationBarAppearance
+        navigationController?.navigationBar.scrollEdgeAppearance = navigationBarAppearance
+        navigationController?.navigationBar.compactAppearance = navigationBarAppearance
+        navigationController?.navigationBar.isTranslucent = true
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.tintColor = .darkGray
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "ellipsis.circle"),
+            menu: UIMenu(title: "", options: [], children: [
+            UIAction(title: "마감일순", image: UIImage(systemName: "calendar.badge.clock"), handler: { _ in }),
+            UIAction(title: "제목순", image: UIImage(systemName: "note.text"), handler: { _ in }),
+            UIAction(title: "우선순위 낮음만", image: UIImage(systemName: "arrowshape.down"), handler: { _ in }),
+            ]))
+        
+        navigationItem.title = title
+    }
+}
+
 extension AllListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

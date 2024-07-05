@@ -12,7 +12,7 @@ class IconImage: UIImageView {
     init() {
         super.init(frame: .zero)
         
-        let configuration = UIImage.SymbolConfiguration(pointSize: 15)
+        let configuration = UIImage.SymbolConfiguration(pointSize: 13)
         let sfImage = UIImage(systemName: "", withConfiguration: configuration)
         image = sfImage
         contentMode = .center
