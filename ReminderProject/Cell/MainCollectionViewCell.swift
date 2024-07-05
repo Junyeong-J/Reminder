@@ -38,11 +38,10 @@ final class MainCollectionViewCell: BaseCollectionViewCell {
     override func configureUI() {
         contentView.backgroundColor = .gray
         titleLabel.textColor = .white
-        titleLabel.font = .systemFont(ofSize: 15)
+        titleLabel.font = .systemFont(ofSize: 17)
         
         countLabel.textColor = .white
-        countLabel.font = .boldSystemFont(ofSize: 20)
-        countLabel.text = "0"
+        countLabel.font = .boldSystemFont(ofSize: 22)
     }
     
     func configureData(icon: IconTypes) {
