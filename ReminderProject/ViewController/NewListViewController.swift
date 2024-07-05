@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import PhotosUI
 import SnapKit
 import RealmSwift
 import Toast
@@ -18,6 +19,7 @@ final class NewListViewController: BaseViewController {
     
     var titleText: String?
     var memoText: String?
+    var photoImage: UIImage?
     
     let tableView = UITableView()
     weak var delegates: PresentProtocol?
@@ -90,6 +92,11 @@ extension NewListViewController {
             realm.add(data)
             print("Realm Create Succeed")
         }
+        
+        if let image = photoImage{
+            saveImageToDocument(image: image, filename: "\(data.id)")
+        }
+        
         delegates?.presentReload()
         dismiss(animated: true)
     }
@@ -101,6 +108,8 @@ extension NewListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0 {
             return 150
+        } else if indexPath.row == 4 && photoImage != nil {
+            return 100 // 이미지가 선택되었을 때 4번 인덱스의 높이를 100으로 설정
         } else {
             return 44
         }
@@ -117,7 +126,8 @@ extension NewListViewController: UITableViewDataSource, UITableViewDelegate {
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: NewListSettingTableViewCell.identifier, for: indexPath) as! NewListSettingTableViewCell
-            cell.configureData(list: list[indexPath.row - 1], contentList: contentList[indexPath.row - 1])
+            let image = (indexPath.row == 4) ? photoImage : nil
+            cell.configureData(list: list[indexPath.row - 1], contentList: contentList[indexPath.row - 1], image: image)
             return cell
         }
     }
@@ -138,6 +148,12 @@ extension NewListViewController: UITableViewDataSource, UITableViewDelegate {
             let vc = PriorityViewController()
             NotificationCenter.default.post(name: NSNotification.Name("sendPriority"), object: nil, userInfo: ["priority": contentList[indexPath.row - 1]])
             navigationController?.pushViewController(vc, animated: true)
+        } else {
+            var configuration = PHPickerConfiguration()
+            configuration.filter = .any(of: [.images, .screenshots])
+            let picker = PHPickerViewController(configuration: configuration)
+            picker.delegate = self
+            present(picker, animated: true)
         }
         
     }
@@ -164,4 +180,18 @@ extension NewListViewController: TitleProtocol, LastDateProtocol {
         return dateString
     }
     
+}
+
+extension NewListViewController: PHPickerViewControllerDelegate {
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        if let itemProvider = results.first?.itemProvider, itemProvider.canLoadObject(ofClass: UIImage.self) {
+            itemProvider.loadObject(ofClass: UIImage.self) { image, error in
+                DispatchQueue.main.async {
+                    self.photoImage = image as? UIImage
+                    self.tableView.reloadRows(at: [IndexPath(row: 4, section: 0)], with: .automatic)
+                }
+            }
+        }
+        picker.dismiss(animated: true)
+    }
 }
