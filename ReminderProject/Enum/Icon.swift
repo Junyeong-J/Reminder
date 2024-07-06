@@ -63,7 +63,7 @@ enum IconTypes: String {
         case .all:
             return realm.objects(ListTable.self).where {
                 $0.completed == false
-            }.sorted(byKeyPath: "lastDate", ascending: true)
+            }.sorted(byKeyPath: "priority", ascending: true)
         case .flag:
             return realm.objects(ListTable.self).where {
                 $0.flag == true

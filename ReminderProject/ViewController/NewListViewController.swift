@@ -17,6 +17,7 @@ final class NewListViewController: BaseViewController {
     var lastDate: Date?
     var contentList = ["", "", "", ""]
     
+    var priority: Int?
     var titleText: String?
     var memoText: String?
     var photoImage: UIImage?
@@ -50,10 +51,23 @@ final class NewListViewController: BaseViewController {
         if let result = notification.userInfo?["content"] as? String {
             print(result)
             contentList[2] = result
+            priority = PriorityToValue(priority: result)
             tableView.reloadData()
         }
     }
     
+    private func PriorityToValue(priority: String) -> Int {
+        switch priority {
+        case "높음":
+            return 1
+        case "보통":
+            return 2
+        case "낮음":
+            return 3
+        default:
+            return 4
+        }
+    }
 }
 
 extension NewListViewController {
@@ -86,7 +100,7 @@ extension NewListViewController {
         }
         
         let realm = try! Realm()
-        let data = ListTable(memoTitle: titleText, content: memoText, lastDate: lastDate, tag: contentList[1], priority: contentList[2], regdate: Date())
+        let data = ListTable(memoTitle: titleText, content: memoText, lastDate: lastDate, tag: contentList[1], priority: priority, regdate: Date())
         
         try! realm.write {
             realm.add(data)
