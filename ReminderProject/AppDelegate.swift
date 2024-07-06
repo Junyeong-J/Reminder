@@ -15,9 +15,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        let config = Realm.Configuration(schemaVersion: 4) { migration, oldSchemaVersion in
+        let config = Realm.Configuration(schemaVersion: 5) { migration, oldSchemaVersion in
             
-            if oldSchemaVersion < 4 {
+            if oldSchemaVersion < 5 {
                 
             }
             

@@ -14,14 +14,14 @@ class ListTable: Object {
     @Persisted var content: String?
     @Persisted var lastDate: Date?
     @Persisted var tag: String?
-    @Persisted var priority: String?
+    @Persisted var priority: Int?
     @Persisted var flag: Bool?
     @Persisted var completed: Bool?
     @Persisted var regdate: Date
     
     
     convenience init(memoTitle: String, content: String?, lastDate: Date?,
-                     tag: String?, priority: String?, regdate: Date) {
+                     tag: String?, priority: Int?, regdate: Date) {
         self.init()
         self.memoTitle = memoTitle
         self.content = content
