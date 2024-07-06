@@ -45,6 +45,23 @@ final class AllListViewController: BaseViewController {
 }
 
 extension AllListViewController {
+    
+    private func sortList(title: String) {
+        
+        switch title {
+        case "마감일순":
+            list = list.filter("lastDate != nil").sorted(byKeyPath: "lastDate", ascending: true)
+        case "제목순":
+            list = list.sorted(byKeyPath: "memoTitle", ascending: true)
+        case "우선순위 낮음만":
+            list = list.filter("priority == 3")
+        default:
+            list = list.sorted(byKeyPath: "lastDate", ascending: true)
+        }
+        
+        tableView.reloadData()
+    }
+    
     func makeNavigationUI(title: String) {
         navigationController?.isNavigationBarHidden = false
         let navigationBarAppearance = UINavigationBarAppearance()
@@ -62,11 +79,17 @@ extension AllListViewController {
         navigationController?.navigationBar.tintColor = .darkGray
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "ellipsis.circle"),
-            menu: UIMenu(title: "", options: [], children: [
-            UIAction(title: "마감일순", image: UIImage(systemName: "calendar.badge.clock"), handler: { _ in }),
-            UIAction(title: "제목순", image: UIImage(systemName: "note.text"), handler: { _ in }),
-            UIAction(title: "우선순위 낮음만", image: UIImage(systemName: "arrowshape.down"), handler: { _ in }),
-            ]))
+                    menu: UIMenu(title: "", options: [], children: [
+                    UIAction(title: "마감일순", image: UIImage(systemName: "calendar.badge.clock"), handler: { _ in
+                        self.sortList(title: "마감일순")
+                    }),
+                    UIAction(title: "제목순", image: UIImage(systemName: "note.text"), handler: { _ in
+                        self.sortList(title: "제목순")
+                    }),
+                    UIAction(title: "우선순위 낮음만", image: UIImage(systemName: "arrowshape.down"), handler: { _ in
+                        self.sortList(title: "우선순위 낮음만")
+                    })
+                ]))
         
         navigationItem.title = title
     }
