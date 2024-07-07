@@ -8,7 +8,7 @@
 import Foundation
 import RealmSwift
 
-final class LikeListTableRepository {
+final class ListTableRepository {
     
     private let realm = try! Realm()
     
@@ -22,6 +22,14 @@ final class LikeListTableRepository {
             print("Realm Error")
         }
         
+    }
+    
+    func deleteIdItem(_ item: ListTable) {
+        if let objectToDelete = realm.object(ofType: ListTable.self, forPrimaryKey: item.id) {
+            try! realm.write {
+                realm.delete(objectToDelete)
+            }
+        }
     }
     
     func fetchAll() -> Results<ListTable> {

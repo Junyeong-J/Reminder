@@ -7,8 +7,11 @@
 
 import UIKit
 import SnapKit
+import RealmSwift
 
 class DetailViewController: BaseViewController {
+    
+    let repository = ListTableRepository()
     
     let titleLabel = UILabel()
     let memoLabel = UILabel()
@@ -25,6 +28,7 @@ class DetailViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        deleteButton.addTarget(self, action: #selector(deleteButtonClicked), for: .touchUpInside)
     }
     
     override func configureHierarchy() {
@@ -86,6 +90,13 @@ extension DetailViewController {
         dateLabel.text = updateDateLabel(date: listItems.lastDate ?? Date())
         tagLabel.text = listItems.tag
         imageView.image = loadImageToDocument(filename: "\(listItems.id)")
+    }
+    
+    @objc func deleteButtonClicked() {
+        guard let listItem = listItems else { return }
+        removeImageFromDocument(filename: "\(listItem.id)")
+        repository.deleteIdItem(listItem)
+        navigationController?.popViewController(animated: true)
     }
     
 }

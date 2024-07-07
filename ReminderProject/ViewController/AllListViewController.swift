@@ -23,6 +23,11 @@ final class AllListViewController: BaseViewController {
         list = viewType?.getFilter()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+    }
+    
     override func configureHierarchy() {
         view.addSubview(tableView)
     }
