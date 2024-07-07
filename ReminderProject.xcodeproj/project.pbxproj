@@ -38,6 +38,8 @@
 		72154D782C35A75C00EEF679 /* PresentProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72154D772C35A75C00EEF679 /* PresentProtocol.swift */; };
 		72154D812C37C3FE00EEF679 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 72154D802C37C3FE00EEF679 /* FSCalendar */; };
 		72154D832C37DE9C00EEF679 /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72154D822C37DE9C00EEF679 /* MainTableViewCell.swift */; };
+		72154D9A2C3AEEBD00EEF679 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72154D992C3AEEBD00EEF679 /* DetailViewController.swift */; };
+		72154D9C2C3AF1BB00EEF679 /* ListTableRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72154D9B2C3AF1BB00EEF679 /* ListTableRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -83,6 +85,8 @@
 		72154D752C352EBD00EEF679 /* PriorityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriorityViewController.swift; sourceTree = "<group>"; };
 		72154D772C35A75C00EEF679 /* PresentProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentProtocol.swift; sourceTree = "<group>"; };
 		72154D822C37DE9C00EEF679 /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
+		72154D992C3AEEBD00EEF679 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		72154D9B2C3AF1BB00EEF679 /* ListTableRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +149,7 @@
 				72154D6E2C34689900EEF679 /* DateViewController.swift */,
 				72154D732C352BF700EEF679 /* TagViewController.swift */,
 				72154D752C352EBD00EEF679 /* PriorityViewController.swift */,
+				72154D992C3AEEBD00EEF679 /* DetailViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -210,6 +215,7 @@
 			isa = PBXGroup;
 			children = (
 				72154D632C3451B100EEF679 /* RealmModel.swift */,
+				72154D9B2C3AF1BB00EEF679 /* ListTableRepository.swift */,
 			);
 			path = DataBase;
 			sourceTree = "<group>";
@@ -299,6 +305,7 @@
 			files = (
 				72154D762C352EBD00EEF679 /* PriorityViewController.swift in Sources */,
 				72154D6F2C34689900EEF679 /* DateViewController.swift in Sources */,
+				72154D9A2C3AEEBD00EEF679 /* DetailViewController.swift in Sources */,
 				72154D662C34529600EEF679 /* TitleProtocol.swift in Sources */,
 				72154D542C34062200EEF679 /* NewListViewController.swift in Sources */,
 				72154D3A2C33EC0B00EEF679 /* MainViewController.swift in Sources */,
@@ -312,6 +319,7 @@
 				72154D3E2C33F17A00EEF679 /* BaseViewController.swift in Sources */,
 				72154D5C2C34443800EEF679 /* NewList.swift in Sources */,
 				72154D262C33E77F00EEF679 /* AppDelegate.swift in Sources */,
+				72154D9C2C3AF1BB00EEF679 /* ListTableRepository.swift in Sources */,
 				72154D782C35A75C00EEF679 /* PresentProtocol.swift in Sources */,
 				72154D4F2C33FE2100EEF679 /* IconImage.swift in Sources */,
 				72154D5A2C3439AC00EEF679 /* NewListSettingTableViewCell.swift in Sources */,
@@ -472,7 +480,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -505,7 +513,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
