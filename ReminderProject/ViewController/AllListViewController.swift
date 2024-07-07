@@ -109,8 +109,15 @@ extension AllListViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = DetailViewController()
+        vc.listItems = list[indexPath.row]
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let delete = UIContextualAction(style: .destructive, title: "삭제") { (action, view, completionHandler) in
+            self.removeImageFromDocument(filename: "\(self.list[indexPath.row].id)")
             try! self.realm.write {
                 self.realm.delete(self.list[indexPath.row])
             }
