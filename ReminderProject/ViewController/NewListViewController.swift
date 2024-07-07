@@ -186,14 +186,6 @@ extension NewListViewController: TitleProtocol, LastDateProtocol {
         self.memoText = content
     }
     
-    private func updateDateLabel(date: Date) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "ko_KR")
-        dateFormatter.dateFormat = "yyyy.MM.dd (EEEE)"
-        let dateString = dateFormatter.string(from: date)
-        return dateString
-    }
-    
 }
 
 extension NewListViewController: PHPickerViewControllerDelegate {

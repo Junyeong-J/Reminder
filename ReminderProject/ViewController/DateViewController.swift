@@ -46,14 +46,14 @@ final class DateViewController: BaseViewController {
         dateLabel.font = UIFont.systemFont(ofSize: 18)
         dateLabel.textAlignment = .center
         
-        updateDateLabel(date: datePicker.date)
+        updateDateLabels(date: datePicker.date)
     }
     
     @objc private func datePickerValueChanged(_ sender: UIDatePicker) {
-        updateDateLabel(date: sender.date)
+        updateDateLabels(date: sender.date)
     }
     
-    private func updateDateLabel(date: Date) {
+    private func updateDateLabels(date: Date) {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "ko_KR")
         dateFormatter.dateFormat = "yyyy.MM.dd (EEEE)"

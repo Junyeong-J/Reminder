@@ -37,4 +37,49 @@ extension UIViewController {
         }
     }
     
+    func loadImageToDocument(filename: String) -> UIImage? {
+        
+        guard let documentDirectory = FileManager.default.urls(
+            for: .documentDirectory,
+            in: .userDomainMask).first else { return nil }
+        
+        let fileURL = documentDirectory.appendingPathComponent("\(filename).jpg")
+
+        if FileManager.default.fileExists(atPath: fileURL.path()) {
+            return UIImage(contentsOfFile: fileURL.path())
+        } else {
+            return UIImage(systemName: "star.fill")
+        }
+        
+    }
+    
+    func removeImageFromDocument(filename: String) {
+         guard let documentDirectory = FileManager.default.urls(
+             for: .documentDirectory,
+             in: .userDomainMask).first else { return }
+
+         let fileURL = documentDirectory.appendingPathComponent("\(filename).jpg")
+         
+         if FileManager.default.fileExists(atPath: fileURL.path()) {
+             
+             do {
+                 try FileManager.default.removeItem(atPath: fileURL.path())
+             } catch {
+                 print("file remove error", error)
+             }
+             
+         } else {
+             print("file no exist")
+         }
+         
+     }
+    
+    func updateDateLabel(date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "ko_KR")
+        dateFormatter.dateFormat = "yyyy.MM.dd (EEEE)"
+        let dateString = dateFormatter.string(from: date)
+        return dateString
+    }
+    
 }
