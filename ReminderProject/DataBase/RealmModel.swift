@@ -32,7 +32,7 @@ class ListTable: Object {
     @Persisted var flag: Bool?
     @Persisted var completed: Bool?
     @Persisted var regdate: Date
-    
+    @Persisted(originProperty: "detail") var main: LinkingObjects<Folder>
     
     convenience init(memoTitle: String, content: String?, lastDate: Date?,
                      tag: String?, priority: Int?, regdate: Date) {

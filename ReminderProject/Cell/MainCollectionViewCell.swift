@@ -51,10 +51,10 @@ final class MainCollectionViewCell: BaseCollectionViewCell {
         countLabel.text = "\(icon.getCount())"
     }
     
-    func configureMyData(title: String) {
+    func configureMyData(folderData: Folder) {
         iconImageView.image = UIImage(systemName: "star")
         iconImageView.backgroundColor = .systemCyan
-        titleLabel.text = title
-//        countLabel.text = "\(icon.getCount())"
+        titleLabel.text = folderData.name
+        countLabel.text = "\(folderData.detail.count)"
     }
 }

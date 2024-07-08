@@ -49,11 +49,44 @@ final class ListTableRepository {
         
     }
     
+    func createMyItem(_ data: ListTable, folder: Folder) {
+        do {
+            try realm.write{
+                folder.detail.append(data)
+                print("Realm Create Succeed")
+            }
+        } catch {
+            print("Realm Error")
+        }
+    }
+    
     func deleteIdItem(_ item: ListTable) {
         if let objectToDelete = realm.object(ofType: ListTable.self, forPrimaryKey: item.id) {
             try! realm.write {
                 realm.delete(objectToDelete)
             }
+        }
+    }
+    
+    func deleteItemList(_ item: ListTable, folder: Folder) {
+        try! self.realm.write {
+            if let index = folder.detail.firstIndex(of: item) {
+                folder.detail.remove(at: index)
+            }
+            self.realm.delete(item)
+        }
+    }
+
+    
+    func deleteMyFolder(_ folder: Folder) {
+        do {
+            try realm.write {
+                realm.delete(folder.detail)
+                realm.delete(folder)
+                print("Folder Reomve Succeed")
+            }
+        }catch{
+            print("Folder Reomve Failed")
         }
     }
     

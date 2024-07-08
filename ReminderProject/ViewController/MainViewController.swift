@@ -180,6 +180,7 @@ extension MainViewController {
     @objc func newTodoClicked() {
         let newListVC = NewListViewController()
         newListVC.delegates = self
+        newListVC.viewType = .origine
         let nav = UINavigationController(rootViewController: newListVC)
         navigationController?.present(nav, animated: true)
     }
@@ -227,7 +228,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         if indexPath.section == 0 {
             cell.configureData(icon: iconTypes[indexPath.item])
         } else {
-            cell.configureMyData(title: folderList[indexPath.item].name)
+            cell.configureMyData(folderData: folderList[indexPath.item])
         }
         cell.layer.cornerRadius = 10
         cell.clipsToBounds = true
@@ -260,6 +261,10 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
             default:
                 break
             }
+        } else {
+            let vc = MyCatalogViewController()
+            vc.folder = folderList[indexPath.item]
+            navigationController?.pushViewController(vc, animated: true)
         }
     }
     

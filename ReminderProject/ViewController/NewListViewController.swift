@@ -14,6 +14,9 @@ import Toast
 final class NewListViewController: BaseViewController {
     
     let list: [NewList] = [.time, .tag, .priority, .image]
+    var viewType: ViewType?
+    var folder: Folder?
+    let repository = ListTableRepository()
     var lastDate: Date?
     var contentList = ["", "", "", ""]
     
@@ -44,7 +47,7 @@ final class NewListViewController: BaseViewController {
     }
     
     override func configureView() {
-        view.backgroundColor = .white
+        super.configureView()
     }
     
     @objc func priorityReceivedNotification(notification: NSNotification) {
@@ -98,18 +101,23 @@ extension NewListViewController {
             self.view.makeToast("제목을 입력해 주세요")
             return
         }
-        
-        let realm = try! Realm()
         let data = ListTable(memoTitle: titleText, content: memoText, lastDate: lastDate, tag: contentList[1], priority: priority, regdate: Date())
-        
-        try! realm.write {
-            realm.add(data)
-            print("Realm Create Succeed")
+        if viewType == .origine {
+            repository.createItem(data)
+            if let image = photoImage {
+                saveImageToDocument(image: image, filename: "\(data.id)")
+            }
+        } else if let folder = folder {
+            repository.createMyItem(data, folder: folder)
+            if let image = photoImage {
+                saveImageToDocument(image: image, filename: "\(data.id)")
+            }
+        } else {
+            print("folder error")
+            return
         }
         
-        if let image = photoImage{
-            saveImageToDocument(image: image, filename: "\(data.id)")
-        }
+        
         
         delegates?.presentReload()
         dismiss(animated: true)
@@ -123,7 +131,7 @@ extension NewListViewController: UITableViewDataSource, UITableViewDelegate {
         if indexPath.row == 0 {
             return 150
         } else if indexPath.row == 4 && photoImage != nil {
-            return 100 // 이미지가 선택되었을 때 4번 인덱스의 높이를 100으로 설정
+            return 100
         } else {
             return 44
         }

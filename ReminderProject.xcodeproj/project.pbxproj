@@ -40,8 +40,9 @@
 		72154D832C37DE9C00EEF679 /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72154D822C37DE9C00EEF679 /* MainTableViewCell.swift */; };
 		72154D9A2C3AEEBD00EEF679 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72154D992C3AEEBD00EEF679 /* DetailViewController.swift */; };
 		72154D9C2C3AF1BB00EEF679 /* ListTableRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72154D9B2C3AF1BB00EEF679 /* ListTableRepository.swift */; };
-		72154DA02C3BFCFA00EEF679 /* MyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72154D9F2C3BFCFA00EEF679 /* MyCollectionViewCell.swift */; };
 		72154DA22C3C026000EEF679 /* CatalogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72154DA12C3C026000EEF679 /* CatalogViewController.swift */; };
+		72154DA42C3C0BE900EEF679 /* MyCatalogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72154DA32C3C0BE900EEF679 /* MyCatalogViewController.swift */; };
+		72154DA62C3C375600EEF679 /* ViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72154DA52C3C375600EEF679 /* ViewType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -89,8 +90,9 @@
 		72154D822C37DE9C00EEF679 /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
 		72154D992C3AEEBD00EEF679 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		72154D9B2C3AF1BB00EEF679 /* ListTableRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableRepository.swift; sourceTree = "<group>"; };
-		72154D9F2C3BFCFA00EEF679 /* MyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCollectionViewCell.swift; sourceTree = "<group>"; };
 		72154DA12C3C026000EEF679 /* CatalogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogViewController.swift; sourceTree = "<group>"; };
+		72154DA32C3C0BE900EEF679 /* MyCatalogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCatalogViewController.swift; sourceTree = "<group>"; };
+		72154DA52C3C375600EEF679 /* ViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +157,7 @@
 				72154D752C352EBD00EEF679 /* PriorityViewController.swift */,
 				72154D992C3AEEBD00EEF679 /* DetailViewController.swift */,
 				72154DA12C3C026000EEF679 /* CatalogViewController.swift */,
+				72154DA32C3C0BE900EEF679 /* MyCatalogViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -195,7 +198,6 @@
 				72154D552C34360800EEF679 /* NewListTitleTableViewCell.swift */,
 				72154D592C3439AC00EEF679 /* NewListSettingTableViewCell.swift */,
 				72154D6C2C34622400EEF679 /* AllListTableViewCell.swift */,
-				72154D9F2C3BFCFA00EEF679 /* MyCollectionViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -213,6 +215,7 @@
 			children = (
 				72154D512C3402CB00EEF679 /* Icon.swift */,
 				72154D5B2C34443800EEF679 /* NewList.swift */,
+				72154DA52C3C375600EEF679 /* ViewType.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -312,7 +315,6 @@
 				72154DA22C3C026000EEF679 /* CatalogViewController.swift in Sources */,
 				72154D762C352EBD00EEF679 /* PriorityViewController.swift in Sources */,
 				72154D6F2C34689900EEF679 /* DateViewController.swift in Sources */,
-				72154DA02C3BFCFA00EEF679 /* MyCollectionViewCell.swift in Sources */,
 				72154D9A2C3AEEBD00EEF679 /* DetailViewController.swift in Sources */,
 				72154D662C34529600EEF679 /* TitleProtocol.swift in Sources */,
 				72154D542C34062200EEF679 /* NewListViewController.swift in Sources */,
@@ -321,6 +323,7 @@
 				72154D472C33F9D200EEF679 /* BaseCollectionViewCell.swift in Sources */,
 				72154D742C352BF700EEF679 /* TagViewController.swift in Sources */,
 				72154D442C33F96700EEF679 /* ReuseIdentifierProtocol.swift in Sources */,
+				72154DA62C3C375600EEF679 /* ViewType.swift in Sources */,
 				72154D6B2C3459A700EEF679 /* AllListViewController.swift in Sources */,
 				72154D832C37DE9C00EEF679 /* MainTableViewCell.swift in Sources */,
 				72154D492C33F9F400EEF679 /* MainCollectionViewCell.swift in Sources */,
@@ -328,6 +331,7 @@
 				72154D5C2C34443800EEF679 /* NewList.swift in Sources */,
 				72154D262C33E77F00EEF679 /* AppDelegate.swift in Sources */,
 				72154D9C2C3AF1BB00EEF679 /* ListTableRepository.swift in Sources */,
+				72154DA42C3C0BE900EEF679 /* MyCatalogViewController.swift in Sources */,
 				72154D782C35A75C00EEF679 /* PresentProtocol.swift in Sources */,
 				72154D4F2C33FE2100EEF679 /* IconImage.swift in Sources */,
 				72154D5A2C3439AC00EEF679 /* NewListSettingTableViewCell.swift in Sources */,
