@@ -40,6 +40,8 @@
 		72154D832C37DE9C00EEF679 /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72154D822C37DE9C00EEF679 /* MainTableViewCell.swift */; };
 		72154D9A2C3AEEBD00EEF679 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72154D992C3AEEBD00EEF679 /* DetailViewController.swift */; };
 		72154D9C2C3AF1BB00EEF679 /* ListTableRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72154D9B2C3AF1BB00EEF679 /* ListTableRepository.swift */; };
+		72154DA02C3BFCFA00EEF679 /* MyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72154D9F2C3BFCFA00EEF679 /* MyCollectionViewCell.swift */; };
+		72154DA22C3C026000EEF679 /* CatalogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72154DA12C3C026000EEF679 /* CatalogViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -87,6 +89,8 @@
 		72154D822C37DE9C00EEF679 /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
 		72154D992C3AEEBD00EEF679 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		72154D9B2C3AF1BB00EEF679 /* ListTableRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableRepository.swift; sourceTree = "<group>"; };
+		72154D9F2C3BFCFA00EEF679 /* MyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCollectionViewCell.swift; sourceTree = "<group>"; };
+		72154DA12C3C026000EEF679 /* CatalogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +154,7 @@
 				72154D732C352BF700EEF679 /* TagViewController.swift */,
 				72154D752C352EBD00EEF679 /* PriorityViewController.swift */,
 				72154D992C3AEEBD00EEF679 /* DetailViewController.swift */,
+				72154DA12C3C026000EEF679 /* CatalogViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -190,6 +195,7 @@
 				72154D552C34360800EEF679 /* NewListTitleTableViewCell.swift */,
 				72154D592C3439AC00EEF679 /* NewListSettingTableViewCell.swift */,
 				72154D6C2C34622400EEF679 /* AllListTableViewCell.swift */,
+				72154D9F2C3BFCFA00EEF679 /* MyCollectionViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -303,8 +309,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				72154DA22C3C026000EEF679 /* CatalogViewController.swift in Sources */,
 				72154D762C352EBD00EEF679 /* PriorityViewController.swift in Sources */,
 				72154D6F2C34689900EEF679 /* DateViewController.swift in Sources */,
+				72154DA02C3BFCFA00EEF679 /* MyCollectionViewCell.swift in Sources */,
 				72154D9A2C3AEEBD00EEF679 /* DetailViewController.swift in Sources */,
 				72154D662C34529600EEF679 /* TitleProtocol.swift in Sources */,
 				72154D542C34062200EEF679 /* NewListViewController.swift in Sources */,

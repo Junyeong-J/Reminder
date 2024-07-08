@@ -50,4 +50,11 @@ final class MainCollectionViewCell: BaseCollectionViewCell {
         titleLabel.text = icon.rawValue
         countLabel.text = "\(icon.getCount())"
     }
+    
+    func configureMyData(title: String) {
+        iconImageView.image = UIImage(systemName: "star")
+        iconImageView.backgroundColor = .systemCyan
+        titleLabel.text = title
+//        countLabel.text = "\(icon.getCount())"
+    }
 }

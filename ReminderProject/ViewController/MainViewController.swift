@@ -14,7 +14,8 @@ final class MainViewController: BaseViewController {
     
     let iconTypes: [IconTypes] = [.today, .schedule, .all, .flag, .complete]
     var list: Results<ListTable>?
-    let realm = try! Realm()
+    var folderList: [Folder] = []
+    let repository = ListTableRepository()
     
     private let calendarView: UIView = {
         let view = UIView()
@@ -49,9 +50,9 @@ final class MainViewController: BaseViewController {
         return view
     }()
     
-    lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout())
+    lazy var mainCollectionView = UICollectionView(frame: .zero, collectionViewLayout: mainCollectionViewLayout())
     
-    func collectionViewLayout() -> UICollectionViewLayout {
+    func mainCollectionViewLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
         let sectionSpacing: CGFloat = 16
         let cellSpacing: CGFloat = 16
@@ -76,16 +77,17 @@ final class MainViewController: BaseViewController {
         setupAppearance()
         setupToolBarButton()
         
-        print(realm.configuration.fileURL)
+        fetchList()
+        repository.detectRealmURL()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        collectionView.reloadData()
+        mainCollectionView.reloadData()
     }
     
     override func configureHierarchy() {
-        view.addSubview(collectionView)
+        view.addSubview(mainCollectionView)
         view.addSubview(calendarView)
         calendarView.addSubview(calendar)
         view.addSubview(listView)
@@ -93,7 +95,7 @@ final class MainViewController: BaseViewController {
     }
     
     override func configureLayout() {
-        collectionView.snp.makeConstraints { make in
+        mainCollectionView.snp.makeConstraints { make in
             make.edges.equalTo(view.safeAreaLayoutGuide)
         }
         
@@ -133,8 +135,8 @@ extension MainViewController {
         
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let newTodo = UIBarButtonItem(title: "새로운 할 일", style: .plain, target: self, action: #selector(newTodoClicked))
-        let listAdd = UIBarButtonItem(title: "목록 추가", style: .plain, target: self, action: nil)
-        let barItems = [newTodo, flexibleSpace, flexibleSpace, flexibleSpace, listAdd]
+        let catalogAdd = UIBarButtonItem(title: "목록 추가", style: .plain, target: self, action: #selector(catalogClicked))
+        let barItems = [newTodo, flexibleSpace, flexibleSpace, flexibleSpace, catalogAdd]
         self.toolbarItems = barItems
     }
     
@@ -162,19 +164,30 @@ extension MainViewController {
     }
     
     func configureCollectionAndTable() {
-        collectionView.delegate = self
-        collectionView.dataSource = self
+        mainCollectionView.delegate = self
+        mainCollectionView.dataSource = self
         listTableView.delegate = self
         listTableView.dataSource = self
         
-        collectionView.register(MainCollectionViewCell.self, forCellWithReuseIdentifier: MainCollectionViewCell.identifier)
+        mainCollectionView.register(MainCollectionViewCell.self, forCellWithReuseIdentifier: MainCollectionViewCell.identifier)
         listTableView.register(MainTableViewCell.self, forCellReuseIdentifier: MainTableViewCell.identifier)
+    }
+    
+    func fetchList() {
+        folderList = repository.fetchFolder()
     }
     
     @objc func newTodoClicked() {
         let newListVC = NewListViewController()
         newListVC.delegates = self
         let nav = UINavigationController(rootViewController: newListVC)
+        navigationController?.present(nav, animated: true)
+    }
+    
+    @objc func catalogClicked() {
+        let catalogVC = CatalogViewController()
+        catalogVC.delegates = self
+        let nav = UINavigationController(rootViewController: catalogVC)
         navigationController?.present(nav, animated: true)
     }
     
@@ -197,42 +210,56 @@ extension MainViewController {
 }
 
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 2
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return iconTypes.count
+        if section == 0 {
+            return iconTypes.count
+        } else {
+            return folderList.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainCollectionViewCell.identifier, for: indexPath) as! MainCollectionViewCell
-        cell.configureData(icon: iconTypes[indexPath.item])
+        if indexPath.section == 0 {
+            cell.configureData(icon: iconTypes[indexPath.item])
+        } else {
+            cell.configureMyData(title: folderList[indexPath.item].name)
+        }
         cell.layer.cornerRadius = 10
         cell.clipsToBounds = true
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        switch indexPath.item {
-        case 0:
-            let vc = AllListViewController()
-            vc.viewType = .today
-            navigationController?.pushViewController(vc, animated: true)
-        case 1:
-            let vc = AllListViewController()
-            vc.viewType = .schedule
-            navigationController?.pushViewController(vc, animated: true)
-        case 2:
-            let vc = AllListViewController()
-            vc.viewType = .all
-            navigationController?.pushViewController(vc, animated: true)
-        case 3:
-            let vc = AllListViewController()
-            vc.viewType = .flag
-            navigationController?.pushViewController(vc, animated: true)
-        case 4:
-            let vc = AllListViewController()
-            vc.viewType = .complete
-            navigationController?.pushViewController(vc, animated: true)
-        default:
-            break
+        if indexPath.section == 0 {
+            switch indexPath.item {
+            case 0:
+                let vc = AllListViewController()
+                vc.viewType = .today
+                navigationController?.pushViewController(vc, animated: true)
+            case 1:
+                let vc = AllListViewController()
+                vc.viewType = .schedule
+                navigationController?.pushViewController(vc, animated: true)
+            case 2:
+                let vc = AllListViewController()
+                vc.viewType = .all
+                navigationController?.pushViewController(vc, animated: true)
+            case 3:
+                let vc = AllListViewController()
+                vc.viewType = .flag
+                navigationController?.pushViewController(vc, animated: true)
+            case 4:
+                let vc = AllListViewController()
+                vc.viewType = .complete
+                navigationController?.pushViewController(vc, animated: true)
+            default:
+                break
+            }
         }
     }
     
@@ -240,7 +267,8 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
 extension MainViewController: PresentProtocol{
     func presentReload() {
-        collectionView.reloadData()
+        fetchList()
+        mainCollectionView.reloadData()
     }
 }
 
@@ -249,19 +277,19 @@ extension MainViewController: FSCalendarDelegate, FSCalendarDataSource {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         dateFormatter.timeZone = TimeZone(identifier: "Asia/Seoul")
-        let formattedDate = dateFormatter.string(from: date)
+        _ = dateFormatter.string(from: date)
         
         let calendar = Calendar.current
         let yesterday = calendar.startOfDay(for: date)
         guard let tomorrow = calendar.date(byAdding: .day, value: 1, to: yesterday) else { return }
-        list = realm.objects(ListTable.self).filter("lastDate >= %@ AND lastDate < %@", yesterday, tomorrow)
+        list = repository.fetchItemsDate(startDate: yesterday, endDate: tomorrow)
         
         self.listView.alpha = 1
         listView.isHidden = false
         
         listTableView.reloadData()
     }
-
+    
     
 }
 

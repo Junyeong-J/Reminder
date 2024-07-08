@@ -12,6 +12,31 @@ final class ListTableRepository {
     
     private let realm = try! Realm()
     
+    func fetchFolder() -> [Folder] {
+        let value = realm.objects(Folder.self)
+        return Array(value)
+    }
+    
+    func detectRealmURL() {
+        print(realm.configuration.fileURL ?? "")
+    }
+    
+    func fetchItemsDate(startDate: Date, endDate: Date) -> Results<ListTable> {
+        return realm.objects(ListTable.self).filter("lastDate >= %@ AND lastDate < %@", startDate, endDate)
+    }
+    
+    func createCatalog(_ data: Folder) {
+        do {
+            try realm.write {
+                realm.add(data)
+                print("Realm Create Succeed")
+            }
+        } catch {
+            print("Realm Error")
+        }
+        
+    }
+    
     func createItem(_ data: ListTable) {
         do {
             try realm.write {

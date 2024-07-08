@@ -8,6 +8,20 @@
 import Foundation
 import RealmSwift
 
+class Folder: Object {
+    @Persisted(primaryKey: true) var id: ObjectId
+    @Persisted var name: String
+    @Persisted var regdate: Date
+    
+    @Persisted var detail: List<ListTable>
+    
+    convenience init(name: String) {
+        self.init()
+        self.name = name
+    }
+}
+
+
 class ListTable: Object {
     @Persisted(primaryKey: true) var id: ObjectId
     @Persisted(indexed: true) var memoTitle: String
