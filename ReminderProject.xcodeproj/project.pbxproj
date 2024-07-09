@@ -43,6 +43,8 @@
 		72154DA22C3C026000EEF679 /* CatalogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72154DA12C3C026000EEF679 /* CatalogViewController.swift */; };
 		72154DA42C3C0BE900EEF679 /* MyCatalogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72154DA32C3C0BE900EEF679 /* MyCatalogViewController.swift */; };
 		72154DA62C3C375600EEF679 /* ViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72154DA52C3C375600EEF679 /* ViewType.swift */; };
+		724FC7772C3D7EA700CDA561 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724FC7762C3D7EA700CDA561 /* Observable.swift */; };
+		724FC77A2C3D7FB500CDA561 /* DateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724FC7792C3D7FB500CDA561 /* DateViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -93,6 +95,8 @@
 		72154DA12C3C026000EEF679 /* CatalogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogViewController.swift; sourceTree = "<group>"; };
 		72154DA32C3C0BE900EEF679 /* MyCatalogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCatalogViewController.swift; sourceTree = "<group>"; };
 		72154DA52C3C375600EEF679 /* ViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewType.swift; sourceTree = "<group>"; };
+		724FC7762C3D7EA700CDA561 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		724FC7792C3D7FB500CDA561 /* DateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +133,8 @@
 		72154D242C33E77F00EEF679 /* ReminderProject */ = {
 			isa = PBXGroup;
 			children = (
+				724FC7782C3D7FA200CDA561 /* ViewModel */,
+				724FC7752C3D7E9700CDA561 /* Observable */,
 				72154D622C3451A500EEF679 /* DataBase */,
 				72154D502C3402B600EEF679 /* Enum */,
 				72154D4D2C33FDFB00EEF679 /* CustomView */,
@@ -227,6 +233,22 @@
 				72154D9B2C3AF1BB00EEF679 /* ListTableRepository.swift */,
 			);
 			path = DataBase;
+			sourceTree = "<group>";
+		};
+		724FC7752C3D7E9700CDA561 /* Observable */ = {
+			isa = PBXGroup;
+			children = (
+				724FC7762C3D7EA700CDA561 /* Observable.swift */,
+			);
+			path = Observable;
+			sourceTree = "<group>";
+		};
+		724FC7782C3D7FA200CDA561 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				724FC7792C3D7FB500CDA561 /* DateViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -328,12 +350,14 @@
 				72154D832C37DE9C00EEF679 /* MainTableViewCell.swift in Sources */,
 				72154D492C33F9F400EEF679 /* MainCollectionViewCell.swift in Sources */,
 				72154D3E2C33F17A00EEF679 /* BaseViewController.swift in Sources */,
+				724FC7772C3D7EA700CDA561 /* Observable.swift in Sources */,
 				72154D5C2C34443800EEF679 /* NewList.swift in Sources */,
 				72154D262C33E77F00EEF679 /* AppDelegate.swift in Sources */,
 				72154D9C2C3AF1BB00EEF679 /* ListTableRepository.swift in Sources */,
 				72154DA42C3C0BE900EEF679 /* MyCatalogViewController.swift in Sources */,
 				72154D782C35A75C00EEF679 /* PresentProtocol.swift in Sources */,
 				72154D4F2C33FE2100EEF679 /* IconImage.swift in Sources */,
+				724FC77A2C3D7FB500CDA561 /* DateViewModel.swift in Sources */,
 				72154D5A2C3439AC00EEF679 /* NewListSettingTableViewCell.swift in Sources */,
 				72154D412C33F1EC00EEF679 /* ViewController+Extension.swift in Sources */,
 				72154D522C3402CB00EEF679 /* Icon.swift in Sources */,

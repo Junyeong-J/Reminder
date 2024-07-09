@@ -13,10 +13,12 @@ final class DateViewController: BaseViewController {
     private let datePicker = UIDatePicker()
     private let dateLabel = UILabel()
     
+    let viewModel = DateViewModel()
     weak var delegate: LastDateProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        bindData()
     }
     
     override func configureHierarchy() {
@@ -49,8 +51,14 @@ final class DateViewController: BaseViewController {
         updateDateLabels(date: datePicker.date)
     }
     
-    @objc private func datePickerValueChanged(_ sender: UIDatePicker) {
-        updateDateLabels(date: sender.date)
+}
+
+extension DateViewController {
+    
+    func bindData() {
+        viewModel.outputDate.bind { value in
+            self.updateDateLabels(date: value ?? Date())
+        }
     }
     
     private func updateDateLabels(date: Date) {
@@ -61,5 +69,8 @@ final class DateViewController: BaseViewController {
         dateLabel.text = dateString
         delegate?.lastDateSet(date: date)
     }
+    
+    @objc private func datePickerValueChanged(_ sender: UIDatePicker) {
+        viewModel.setDate(date: sender.date)
+    }
 }
-

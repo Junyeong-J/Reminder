@@ -264,8 +264,8 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
             }
         } else {
             let vc = MyCatalogViewController()
-            let test = folderList[indexPath.item]
-            vc.folder = test
+            let folderList = folderList[indexPath.item]
+            vc.folder = folderList
             navigationController?.pushViewController(vc, animated: true)
         }
     }
