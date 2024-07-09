@@ -83,6 +83,7 @@ final class MainViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        fetchList()
         mainCollectionView.reloadData()
     }
     
@@ -263,7 +264,8 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
             }
         } else {
             let vc = MyCatalogViewController()
-            vc.folder = folderList[indexPath.item]
+            let test = folderList[indexPath.item]
+            vc.folder = test
             navigationController?.pushViewController(vc, animated: true)
         }
     }

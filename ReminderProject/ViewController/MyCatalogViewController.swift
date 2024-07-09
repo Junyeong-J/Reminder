@@ -79,8 +79,6 @@ extension MyCatalogViewController {
         navigationController?.popViewController(animated: true)
     }
 
-
-
 }
 
 extension MyCatalogViewController: UITableViewDataSource, UITableViewDelegate {
