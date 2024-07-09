@@ -47,8 +47,7 @@ final class DateViewController: BaseViewController {
         dateLabel.textColor = .black
         dateLabel.font = UIFont.systemFont(ofSize: 18)
         dateLabel.textAlignment = .center
-        
-        updateDateLabels(date: datePicker.date)
+
     }
     
 }
@@ -56,21 +55,19 @@ final class DateViewController: BaseViewController {
 extension DateViewController {
     
     func bindData() {
+        viewModel.outputDateString.bind { value in
+            self.dateLabel.text = value
+        }
+        
         viewModel.outputDate.bind { value in
-            self.updateDateLabels(date: value ?? Date())
+            if let date = value {
+                self.delegate?.lastDateSet(date: date)
+            }
         }
     }
     
-    private func updateDateLabels(date: Date) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "ko_KR")
-        dateFormatter.dateFormat = "yyyy.MM.dd (EEEE)"
-        let dateString = dateFormatter.string(from: date)
-        dateLabel.text = dateString
-        delegate?.lastDateSet(date: date)
-    }
-    
     @objc private func datePickerValueChanged(_ sender: UIDatePicker) {
-        viewModel.setDate(date: sender.date)
+        print(sender.date)
+        viewModel.inputDateTapped.value = sender.date
     }
 }

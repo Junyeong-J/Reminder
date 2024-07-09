@@ -10,24 +10,24 @@ import Foundation
 class DateViewModel {
     
     var outputDate: Observable<Date?> = Observable(nil)
-    
-    var inputDateTapped: Observable<Void?> = Observable(nil)
+    var outputDateString: Observable<String> = Observable("")
+    var inputDateTapped: Observable<Date?> = Observable(nil)
     
     init() {
-        inputDateTapped.bind { _ in
+        inputDateTapped.bind { date in
+            self.outputDate.value = date
             self.updateDateLabels()
         }
     }
     
-    func setDate(date: Date) {
-        outputDate.value = date
-    }
-    
     private func updateDateLabels() {
+        guard let date = outputDate.value else { return }
+        
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "ko_KR")
         dateFormatter.dateFormat = "yyyy.MM.dd (EEEE)"
-        let dateString = dateFormatter.string(from: outputDate.value ?? Date())
+        let dateString = dateFormatter.string(from: date)
+        outputDateString.value = dateString
     }
     
 }
